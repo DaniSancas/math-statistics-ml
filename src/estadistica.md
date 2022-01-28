@@ -24,7 +24,7 @@ $$
 
 Por lo tanto, dado un conjunto de datos:
 $$
-10, 7, 4, 6, 8, 10, 10, 9
+\{10, 7, 4, 6, 8, 10, 10, 9\}
 $$
 
 La media se calculará como:
@@ -55,12 +55,12 @@ La mediana es única para cada conjunto de datos. No se ve afectada por extremos
 
 Por lo tanto, dado un conjunto de datos:
 $$
-10, 7, 4, 6, 8, 10, 10, 9
+\{10, 7, 4, 6, 8, 10, 10, 9\}
 $$
 
 Si la ordenamos de menor a mayor:
 $$
-4, 6, 7, 8, 9, 10, 10, 10
+\{4, 6, 7, 8, 9, 10, 10, 10\}
 $$
 
 La mediana caerá entre los valores centrales $8$ y $9$, por lo tanto:
@@ -76,7 +76,7 @@ La mediana se representa como $M_0$. Es el valor que ocurre con más frecuencia.
 
 Por lo tanto, dado un conjunto de datos:
 $$
-10, 7, 4, 6, 8, 10, 10, 9
+\{10, 7, 4, 6, 8, 10, 10, 9\}
 $$
 
 La moda será:
@@ -115,7 +115,7 @@ Utilizamos $n-1$ para que la media de todos estos valores de $s^2$ sea igual a $
 
 Por lo tanto, dado un conjunto de datos:
 $$
-10, 7, 4, 6, 8, 10, 10, 9
+\{10, 7, 4, 6, 8, 10, 10, 9\}
 $$
 
 Cuya media hallada en la sección anterior es $\mu = 8$ y la población es $N = 8$. Hallamos:
@@ -155,7 +155,7 @@ $$
 
 Por lo tanto, dado un conjunto de datos:
 $$
-10, 7, 4, 6, 8, 10, 10, 9
+\{10, 7, 4, 6, 8, 10, 10, 9\}
 $$
 
 Dada su varianza $\sigma^2 = 4.25$, hallamos la desviación estándar:
@@ -177,7 +177,7 @@ Donde $x_1$ es el valor mínimo y $x_k$ el valor máximo del conjunto.
 
 Por lo tanto, dado un conjunto de datos:
 $$
-10, 7, 4, 6, 8, 10, 10, 9
+\{10, 7, 4, 6, 8, 10, 10, 9\}
 $$
 
 Los datos ordenados corresponderían a:
@@ -189,3 +189,190 @@ Por lo tanto:
 $$
 R = x_8 - x_1 = 10 - 4 = 6
 $$
+
+# Visualización
+
+## Tipos de variables
+
+Podemos diferenciar variables categóricas y contínuas. 
+
+Las variables **categóricas** presentan un número finito de categorías o grupos (por ejemplo "género"), mientras que las **contínuas** pueden presentar un número infinito de valores entre dos valores dados.
+
+Dependiendo del tipo de variable (y el número) que se quiera mostrar existen algunas sugerencias de presentación.
+
+![Sugerencia de presentación de visualización de datos.](https://extremepresentation.com/wp-content/uploads/6a00d8341bfd2e53ef0148c699cc96970c.jpg)
+
+## Ilustrando parámetros estadísticos
+
+Existen diferentes maneras de representar los datos, en función de las métricas que queramos mostrar. Algunos ejemplos:
+
+- Histograma: Distribución y varianza.
+- Diagramas de caja (box-plot): Media, mediana, cuartiles y valores atípicos (outliers).
+- Gráfico de sectores (pie chart): Porcentajes del total.
+
+Algunas gráficas son simples y fáciles de interpretar, sin embargo hay otras que requieren algo más de estudio, como por ejemplo el "box-plot".
+![Ejemplo de box-plot](src/img/boxplot_explained.png)
+
+\pagebreak
+
+A continuación se presentan una serie de visualizaciones para un conjunto de datos similar a la siguiente muestra: 
+
+```python
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid")
+
+ratings_url = (
+	"https://cf-courses-data.s3.us.cloud-object-storage."
+	"appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-"
+	"SkillsNetwork/labs/teachingratings.csv"
+)
+ratings_df = pd.read_csv(ratings_url)
+
+
+ratings_df[['tenure', 'age', 'gender', 'eval', 'division']].head(10)
+```
+
+|    | tenure  | age  | gender  | eval  | division |
+|----|---------|------|---------|-------|----------|
+| 0  | yes     | 36   | female  | 4.3   | upper    |
+| 1  | yes     | 36   | female  | 3.7   | upper    |
+| 2  | yes     | 36   | female  | 3.6   | upper    |
+| 3  | yes     | 36   | female  | 4.4   | upper    |
+| 4  | yes     | 59   | male    | 4.5   | upper    |
+| 5  | yes     | 59   | male    | 4.0   | upper    |
+| 6  | yes     | 59   | male    | 2.1   | upper    |
+| 7  | yes     | 51   | male    | 3.7   | upper    |
+| 8  | yes     | 51   | male    | 3.2   | upper    |
+| 9  | yes     | 40   | female  | 4.3   | upper    |
+
+\pagebreak
+
+### Diagramas de barras
+
+**Bar-plot**.
+
+Promedio de las evaluaciones en ambos grupos de los niveles altos y bajos.
+
+```python
+ax = sns.barplot(
+	x="division", 
+	y="eval", 
+	data=(
+		ratings_df
+		.groupby('division')[['eval']]
+		.mean()
+		.reset_index()
+	)
+)
+```
+
+![Ejemplo de bar-plot](src/img/barplot_example.png)
+
+\pagebreak
+
+
+### Diagramas de dispersión
+
+**Scatter-plot** para diagramas de dispersión sencillos.
+
+Diagrama de dispersión de la relación entre la edad y las puntuaciones de las evaluaciones, diferenciando entre géneros.
+
+```python
+ax = sns.scatterplot(
+	x='age', 
+	y='eval', 
+	hue='gender',
+	data=ratings_df
+)
+```
+
+![Ejemplo de scatter-plot](src/img/scatterplot_example.png)
+
+\pagebreak
+
+**Rel-plot** para diagramas de dispersión más complejos.
+
+Diagrama de dispersión de la relación entre la edad y las puntuaciones de las evaluaciones, diferenciando entre genero y tipo de jornada de trabajo.
+
+```python
+ax = sns.relplot(
+	x="age", 
+	y="eval", 
+	hue="gender",
+	row="tenure",
+	data=ratings_df, 
+	height=3, 
+	aspect=2
+)
+```
+
+![Ejemplo de rel-plot](src/img/relplot_example.png)
+
+\pagebreak
+
+### Diagramas de cajas
+
+**Box-plot**.
+
+Comparación de la edad con el tipo de jornada de trabajo y el género.
+
+```python
+ax = sns.boxplot(
+	x="tenure", 
+	y="age", 
+	hue="gender",
+	data=ratings_df
+)
+```
+
+![Ejemplo de box-plot](src/img/boxplot_example.png)
+
+\pagebreak
+
+### Diagramas de categorías 
+
+**Cat-plot**
+
+Histograma de grupo de enseñanza por género, tipo de jornada de trabajo y tipo de división.
+
+```python
+ax = sns.catplot(
+	x='gender', 
+	hue='tenure', 
+	row='division',
+	kind='count',
+	data=ratings_df,
+	height=3, 
+	aspect=2
+)
+```
+
+![Ejemplo de cat-plot](src/img/catplot_example.png)
+
+\pagebreak
+
+### Diagramas de distribución
+
+**Dist-plot**
+
+```python
+sns.distplot(
+	ratings_df[ratings_df['gender'] == 'female']['eval'], 
+	color='green', 
+	kde=False
+) 
+sns.distplot(
+	ratings_df[ratings_df['gender'] == 'male']['eval'], 
+	color="orange", 
+	kde=False
+) 
+plt.show()
+```
+
+![Ejemplo de dist-plot](src/img/distplot_example.png)
+
+\pagebreak
