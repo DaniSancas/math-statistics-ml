@@ -425,7 +425,7 @@ Sobre una población de 1.000 productos totales, podemos escoger una muestra de 
 
 Una vez seleccionada correctamente la muestra, si resulta que todos los productos tienen el mismo peso, se habrá probado la hipótesis nula $H_0$. Por el contrario, si observamos diferentes pesos en la muestra, daremos por probada la hipótesis alternativa $H_1$.
 
-## Alfa ($\alpha$) y p-valor
+## Alfa ($\alpha$) y p-value
 
 **Alfa ($\alpha$)** también se conoce como el **nivel de significancia**. Es la probabilidad de rechazar la hipótesis nula cuando la hipótesis nula es verdadera. El valor utilizado suele ser del 5%. Esto significa que, en una población o muestra dada, si calculamos un rango de valores en el que se encuentra la media, 5 de cada 100 veces, este rango de valores no contendrá los valores medios, pero podríamos haber dicho que sí. El valor alfa es el riesgo que está dispuesto a aceptar si se equivoca, significa la región de rechazo y no se aceptará ningún valor que se encuentre dentro de esta región. 
 
@@ -435,7 +435,7 @@ Dependiendo del caso de uso, puede estar dispuesto a llegar hasta el 20%. Eso si
 
 En los casos de una prueba de dos colas, la región de rechazo en ambas colas se suma al valor total de alfa, es decir, si $\alpha = 5%$, la región de rechazo en ambas colas será del 2.5% cada una.
 
-El **p-valor** es un valor calculado y un resultado que se obtiene como parte de la realización de su prueba de hipótesis. Dependiendo de la prueba, el cálculo variará. El p-valor se puede interpretar como la probabilidad de obtener un resultado tan extremo o más extremo cuando la hipótesis nula es verdadera, es decir, la probabilidad de observar ese valor de muestra particular si la hipótesis nula fuera verdadera. Por lo tanto, si el p-valor es menor que su nivel de significancia, rechazará la hipótesis nula. Por ejemplo:
+El **p-value** es un valor calculado y un resultado que se obtiene como parte de la realización de su prueba de hipótesis. Dependiendo de la prueba, el cálculo variará. El p-value se puede interpretar como la probabilidad de obtener un resultado tan extremo o más extremo cuando la hipótesis nula es verdadera, es decir, la probabilidad de observar ese valor de muestra particular si la hipótesis nula fuera verdadera. Por lo tanto, si el p-value es menor que su nivel de significancia, rechazará la hipótesis nula. Por ejemplo:
 
 $$
 H_0: \mu = 100
@@ -444,17 +444,17 @@ $$
 H_1: \mu > 100
 $$
 
-Si realiza una prueba y obtiene un p-valor de 0.02, esto significa que hay un 2% de probabilidad de obtener un valor de 100 o más de 100. Si elegimos un valor de significancia ($\alpha$) del 5%, **rechazaremos** la hipótesis nula, porque el 2% es menos del 5%. Si elegimos un valor de significancia del 1%, **no podremos rechazar** la hipótesis nula porque el 2% es mayor que el 1%.
+Si realiza una prueba y obtiene un p-value de 0.02, esto significa que hay un 2% de probabilidad de obtener un valor de 100 o más de 100. Si elegimos un valor de significancia ($\alpha$) del 5%, **rechazaremos** la hipótesis nula, porque el 2% es menos del 5%. Si elegimos un valor de significancia del 1%, **no podremos rechazar** la hipótesis nula porque el 2% es mayor que el 1%.
 
-Para usar tanto el p-valor como el nivel de significancia juntos, hay que decidir un p-valorara $\alpha$ después de enunciar su hipótesis. Supongamos que es $\alpha = 0.10$ (o 10%). A continuación, se recogen los datos y se calcula el p-valor. Si el p-valor es mayor que $\alpha$, se asume que la hipótesis nula es verdadera y no la rechaza. Si el p-valor es menor que $\alpha$, se asume que la hipótesis nula es falsa y la rechaza. 
+Para usar tanto el p-value como el nivel de significancia juntos, hay que decidir un p-valueara $\alpha$ después de enunciar su hipótesis. Supongamos que es $\alpha = 0.10$ (o 10%). A continuación, se recogen los datos y se calcula el p-value. Si el p-value es mayor que $\alpha$, se asume que la hipótesis nula es verdadera y no la rechaza. Si el p-value es menor que $\alpha$, se asume que la hipótesis nula es falsa y la rechaza. 
 
-$p-valor > \alpha: H_0$ es verdadera (no se rechaza)
+$p-value > \alpha: H_0$ es verdadera (no se rechaza)
 
-$p-valor < \alpha: H_0$ es falsa (se rechaza)
+$p-value < \alpha: H_0$ es falsa (se rechaza)
 
-En los casos en que el p-valor y los niveles de significancia son aproximadamente iguales, por ejemplo $p-valor = 0.11$, se deberá decidir echazar o no rechazar, o se puede decidir volver a muestrear y recopilar más datos.
+En los casos en que el p-value y los niveles de significancia son aproximadamente iguales, por ejemplo $p-value = 0.11$, se deberá decidir echazar o no rechazar, o se puede decidir volver a muestrear y recopilar más datos.
 
-En resumen: El p-valor es la probabilidad de observar un resultado igual o más extremo que el actual, condicionado a que la hipótesis nula ($H_0$) sea cierta. Cuando es muy pequeño, lo que decimos es que la probabilidad de observar estos datos es muy baja si la $H_0$ fuera cierta, así que la descartamos.
+En resumen: El p-value es la probabilidad de observar un resultado igual o más extremo que el actual, condicionado a que la hipótesis nula ($H_0$) sea cierta. Cuando es muy pequeño, lo que decimos es que la probabilidad de observar estos datos es muy baja si la $H_0$ fuera cierta, así que la descartamos.
 
 ## Distribución normal
 
@@ -517,7 +517,7 @@ Presentamos nuestra hipótesis:
 - Hipótesis alternativa: $\mu_m \neq \mu_h$ (existe diferencia en la evaluación de ambos géneros)
 - Establecemos alfa: $\alpha$ = 0.05
 
-Utilizamos la librería de funciones estadísticas para hallar el p-valor.
+Utilizamos la librería de funciones estadísticas para hallar el p-value.
 
 ```python
 import scipy.stats
@@ -529,7 +529,7 @@ scipy.stats.ttest_ind(
 # Ttest_indResult(statistic=-3.249937943510772, pvalue=0.0012387609449522217)
 ```
 
-Dado que el p-valor (0.001) es menor que $\alpha$ (0.05) rechazamos la hipótesis nula, ya que hay suficientes pruebas de que existe una diferencia estadística en las evaluaciones docentes en función del género.
+Dado que el p-value (0.001) es menor que $\alpha$ (0.05) rechazamos la hipótesis nula, ya que hay suficientes pruebas de que existe una diferencia estadística en las evaluaciones docentes en función del género.
 
 ## Estandarización de variables aleatorias normales
 
@@ -553,7 +553,7 @@ $$
 z = \frac{x - \mu}{\sigma}
 $$
 
-Donde $z$ es la variable aleatoria normal estandarizada de $x$.
+Donde $z$ (z-score) es la variable aleatoria normal estandarizada de $x$.
 
 Explicado con un ejemplo: Si dada una distribución normal (no estándar) con (media) $\mu = 5$ y (desviación estándar) $\sigma = 3$, queremos saber la probablidad de que una variable aleatoria sea menor que 5.9, expresado como $P(X < 5.9)$. Teniendo una tabla de probabilidades de una distribución normal estándar, primero debemos estandarizar nuestras variables.
 
@@ -600,6 +600,43 @@ scipy.stats.norm.cdf((x - mean) / std)
 # 0.61791
 ```
 
+### Obtener $\sigma$ a partir de $\mu$ y p-value
+
+Las z-scores son desviaciones estándar. Si, por ejemplo, una herramienta devuelve una z-score de $+2.5$, diría que el resultado son desviaciones estándar de $2.5$ Tanto las z-scores como los p-values se asocian con la distribución normal estándar como se muestra a continuación.
+
+![Valores de confianza](src/img/significance_level.png)
+
+Como resumen de valores de confianza:
+
+| z-score (Desviaciones estándar) | p-value (Probabilidad) | Nivel de confianza |
+|--------------------------------------|------------------------|--------------------|
+| < -1.65 o > +1.65                    | < 0.10                 | 90 %               |
+| < -1.96 o > +1.96                    | < 0.05                 | 95 %               |
+| < -2.58 o > +2.58                    | < 0.01                 | 99 %               |
+
+Ilustrado con un ejemplo práctico: Los ingresos semanales de los conductores de autobuses se distribuyen normalmente con una media de $\$395$. Si solo el $0.84\%$ de los conductores de autobuses tiene un ingreso semanal de más de $\$429.35$, hallar la desviación estándar de los ingresos semanales de los conductores de autobús.
+
+Por lo tanto, dados $\mu = 395$ y p-value = $0.0084$, hallar $\sigma$ (desviación estándar):
+
+En este caso, como queremos obtener el valor de la cola de la derecha (solo el $0.84\%$ tiene un ingreso MAYOR), nuestra z-score será $>2.58$, dado que es el valor que le corresponde a un p-value $< 0.01$.
+
+Dada la fórmula:
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+Sustituimos:
+$$
+2.58 = \frac{429.35 - 395}{\sigma}
+$$
+
+Y resolvemos:
+$$
+\sigma = \frac{429.35 - 395}{2.58} = 13.31
+$$
+
+Este valor es aproximado ya que no se trata de un valor ajustado del todo.
+
 ## Ejercicio de resumen
 
 Para comprobar la hipótesis de que dormir al menos 8 horas hace a uno mas inteligente, a 12 personas que han dormido al menos 8 horas durante el último año, se les ha hecho un prueba de inteligencia.
@@ -626,7 +663,7 @@ $$
 z = \frac{x - \mu}{\sigma}
 $$
 
-Dado que se trata de una muestra usaremos la siguiente fórmula:
+Dado que se trata de una muestra usaremos la siguiente fórmula para hallar el z-score:
 
 $$
 z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}
@@ -645,7 +682,7 @@ data_8h = np.array(
 n = data_8h.size  # 12
 data_8h_mean = round(data_8h.mean(), 3)  # 106.0
 
-# Para hallar p-valor, restamos 1 menos el resultado, ya que 
+# Para hallar p-value, restamos 1 menos el resultado, ya que 
 #   queremos obtener valores MAYORES QUE 100
 # Por defecto se halla la probabilidad de que Z sea MENOR QUE 
 #   un valor
@@ -653,7 +690,7 @@ z = scipy.stats.norm.cdf(
 	(data_8h_mean - poblation_mean)/(poblation_sd/sqrt(n))
 )
 round(1 - z, 5)
-# p-valor = 0.01883
+# p-value = 0.01883
 ```
 
-Dado que p-valor ($0.01883$) es menor que alfa ($0.05$), rechazamos la hipótesis nula al no haber evidencia suficiente que la soporte. Es decir: la probabilidad de observar estos datos en un universo en el que la hipótesis nula fuera cierta, es de un $1.883\%$. Dado que es inferior al $5\%$ fijado ($\alpha$), descartamos la hipótesis nula.
+Dado que p-value ($0.01883$) es menor que alfa ($0.05$), rechazamos la hipótesis nula al no haber evidencia suficiente que la soporte. Es decir: la probabilidad de observar estos datos en un universo en el que la hipótesis nula fuera cierta, es de un $1.883\%$. Dado que es inferior al $5\%$ fijado ($\alpha$), descartamos la hipótesis nula.
